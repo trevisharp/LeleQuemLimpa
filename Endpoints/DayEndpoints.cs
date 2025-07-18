@@ -15,7 +15,11 @@ public static class DayEndpoints
             if (today is null)
                 return Results.NotFound();
             
-            return Results.Ok(today);
+            return Results.Ok(new {
+                divas = today.Divas.Select(d => new {
+                    d.ID, d.Name
+                })
+            });
         });
 
         app.MapPut("/today/done", async ([FromServices]IDayRepository dayRepo) =>
