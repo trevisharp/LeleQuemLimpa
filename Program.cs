@@ -16,9 +16,12 @@ builder.Services.AddDbContext<LeleQuemLimpaDbContext>(
 
 builder.Services.AddTransient<IDivaRepository, EFDivaRepository>();
 
+builder.Services.AddTransient<IDayRepository, EFDayRepository>();
+
 var app = builder.Build();
 
 // app.MapControllers();
 app.ConfigureDivaEndpoints();
+app.ConfigureDayEndpoints();
 
 app.Run();
