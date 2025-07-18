@@ -1,3 +1,4 @@
+using LeleQuemLimpa.Endpoints;
 using LeleQuemLimpa.Implementations;
 using LeleQuemLimpa.Models;
 using LeleQuemLimpa.Services;
@@ -5,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+// builder.Services.AddControllers();
 
 builder.Services.AddDbContext<LeleQuemLimpaDbContext>(
     options => options.UseSqlServer(
@@ -17,6 +18,7 @@ builder.Services.AddTransient<IDivaRepository, EFDivaRepository>();
 
 var app = builder.Build();
 
-app.MapControllers();
+// app.MapControllers();
+app.ConfigureDivaEndpoints();
 
 app.Run();
